@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import CodeMirror from 'codemirror/lib/codemirror'
 import 'codemirror/mode/javascript/javascript'
-
+import Json2JSDoc from 'json2jsdoc'
 $(function () {
   const defaultSize = ( window.innerWidth < 768 ) ? 200 : 400;
 
