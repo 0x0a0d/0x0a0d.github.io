@@ -29,8 +29,8 @@ $(function () {
         break_line: '\r\n'
       });
       const jsdoc = converter.convert().export();
+      console.log(jsdoc);
       output.setValue(jsdoc);
-      $('#json-output').val(jsdoc);
     } catch (e) {
       console.error(e);
     }

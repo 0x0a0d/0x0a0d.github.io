@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-json2doc": "webpack --config json2jsdoc/webpack.config.js --progress"
+    "build-json2jsdoc": "webpack --config json2jsdoc/webpack.config.js --progress"
   },
   "keywords": [],
   "author": "",
