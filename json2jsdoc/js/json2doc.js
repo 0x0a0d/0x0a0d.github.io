@@ -22,13 +22,15 @@ $(function () {
       const json = JSON.parse(input.getValue());
       const namespace = $('#namespace').val();
       const memberOf = $('#memberOf').val();
+      const active_description = $('#active_description')[0].checked;
+      debugger
       const converter = new Json2JSDoc(json, {
         namespace: namespace === '' ? 'json2JSDoc' : namespace,
         memberOf,
-        break_line: '\r\n'
+        break_line: '\r\n',
+        add_content_as_description: active_description
       });
       const jsdoc = converter.convert().export();
-      console.log(jsdoc);
       output.setValue(jsdoc);
     } catch (e) {
       console.error(e);
