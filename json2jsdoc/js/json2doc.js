@@ -23,7 +23,6 @@ $(function () {
       const namespace = $('#namespace').val();
       const memberOf = $('#memberOf').val();
       const active_description = $('#active_description')[0].checked;
-      debugger
       const converter = new Json2JSDoc(json, {
         namespace: namespace === '' ? 'json2JSDoc' : namespace,
         memberOf,
