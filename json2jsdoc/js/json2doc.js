@@ -18,8 +18,15 @@ $(function () {
   output.setSize('100%', defaultSize);
   $('#btn-convert').on('click', function (e) {
     e.preventDefault();
+    this.disabled = true;
     try {
-      const json = JSON.parse(input.getValue());
+      const input_value = input.getValue();
+      let json;
+      try {json = JSON.parse(input_value);} catch (e) {}
+      if (json == null) try {eval(`json = ${input_value}`);} catch (e) {}
+      if (json == null) {
+        throw new Error('Failed to parse input data\nI parse input by JSON.parse or eval() when failed');
+      }
       const namespace = $('#namespace').val();
       const memberOf = $('#memberOf').val();
       const active_description = $('#active_description')[0].checked;
@@ -32,7 +39,8 @@ $(function () {
       const jsdoc = converter.convert().export();
       output.setValue(jsdoc);
     } catch (e) {
-      console.error(e);
+      alert(e.message);
     }
+    this.disabled = false;
   })
 });
