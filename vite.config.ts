@@ -5,6 +5,9 @@ import VitePluginWindicss from 'vite-plugin-windicss'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  define: {
+    'process.env': {},
+  },
   plugins: [
     vitePluginHtmlEnv(),
     VitePluginWindicss(),

@@ -1,0 +1,6 @@
+/**
+trap for plugin tailwind formatter
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

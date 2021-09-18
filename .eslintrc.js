@@ -3,5 +3,8 @@ module.exports = {
     jest: true,
   },
   parser: '@typescript-eslint/parser',
-  extends: ['@cylution/react']
+  extends: ['@cylution/react'],
+  rules: {
+    'unused-imports/no-unused-vars': 0,
+  },
 }
