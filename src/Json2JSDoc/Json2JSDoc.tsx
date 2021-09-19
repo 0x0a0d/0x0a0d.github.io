@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { InputOutputEditor, InputOutputRef } from '../components/InputOutputEditor'
 import demo from './demo.json'
 import dJSON from 'dirty-json'
-import ReactMarkdown from 'react-markdown'
 import { json2JSDoc } from 'json2jsdoc'
 
 export const Json2JSDoc = () => {
@@ -64,9 +63,6 @@ export const Json2JSDoc = () => {
           )
         }
       </div>
-      <ReactMarkdown>
-        {"## Create files\n\n- `/app.colors.json`\n- `/app.colors.scss` or copy directly to `index.css`\n\n## Edit files\n- Edit `/tailwind.config.js` (or `windicss`)\n```js\nmodule.exports = {\n  // ...\n  theme: {\n    extend: {\n      colors: require('./app.colors.json'),\n    },\n  },\n  // ...\n}\n\n```\n- Edit `src/index.scss`\n```scss\n// ignore this step if you copied to index.css\n@import \"../app.colors.scss\";\n\n```\n"}
-      </ReactMarkdown>
     </InputOutputEditor>
   )
 }
