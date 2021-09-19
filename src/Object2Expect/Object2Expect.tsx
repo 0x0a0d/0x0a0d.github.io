@@ -20,9 +20,6 @@ export const Object2Expect = () => {
       }}
       inputExtensions={[json()]}
       resultExtensions={[javascript()]}
-      resultProps={{
-        editable: false,
-      }}
     >
       <div className={'mt-2'}>
         <div className={'flex flex-col'}>

@@ -39,7 +39,7 @@ export const InputOutputEditor = forwardRef<InputOutputRef | undefined, InputOut
   }))
 
   return (
-    <div className={'p-2 flex flex-col space-y-4 flex-grow'}>
+    <div className={'p-2 mr-4 flex flex-col space-y-4 flex-grow'}>
       <div className={'flex flex-row space-x-4'}>
         <div className={'w-1/2'}>
           <span className={'text-lg'}>{ inputHeader }</span>

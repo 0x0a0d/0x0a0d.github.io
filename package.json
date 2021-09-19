@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "deploy": "yarn build && cd master && git add --all && git commit -m 'deploy' && git push"
   },
   "license": "MIT",
   "private": true,
