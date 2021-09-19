@@ -5,7 +5,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "deploy": "yarn build && cd master && git add --all && git commit -m 'deploy' && git push"
+    "deploy": "yarn build && cd master && git add --all && git commit -m 'deploy' && git push",
+    "built:deploy": "cd master && git add --all && git commit -m 'deploy' && git push"
   },
   "license": "MIT",
   "private": true,
