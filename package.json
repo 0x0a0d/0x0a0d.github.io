@@ -1,6 +1,6 @@
 {
   "name": "0x0a0d.github.io",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
