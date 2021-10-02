@@ -6,7 +6,8 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "deploy": "yarn build && cd master && git add --all && git commit -m 'deploy' && git push",
-    "built:deploy": "cd master && git add --all && git commit -m 'deploy' && git push"
+    "built:deploy": "cd master && git add --all && git commit -m 'deploy' && git push",
+    "postinstall": "patch-package"
   },
   "license": "MIT",
   "private": true,

@@ -1,32 +1,38 @@
 
-const buildExpect = (key, value, isObj, addIgnoreTypescript) => {
-  const test = `expect(${key}).${isObj ? 'toEqual' : 'toBe'}(${JSON.stringify(value)})`
-  return addIgnoreTypescript
-    ? [
-      '// @ts-ignore',
-      test
-    ]
-    : test
+const buildExpect = (key, value, isObj) => {
+  return `expect(${key}).${isObj ? 'toEqual' : 'toBe'}(${JSON.stringify(value)})`
 }
-export const object2expect = (obj, childDeepLevel = 0, varName = 'result', addIgnoreTypescript = false): string[] => {
+export const object2expect = (obj, childDeepLevel = 0, arrayDeep: number, varName = 'result'): string[] => {
   if (varName == null) {
     throw new Error('varName must be set')
   }
-  return Array.prototype.concat.apply([], Object.entries(obj).map(([key, value]) => {
-    const varKey = `${varName}${/^[a-z0-9_$]+$/i.test(key) ? `.${key}` : `[${JSON.stringify(key)}]`}`
+  if (childDeepLevel <= 0) {
+    return [
+      buildExpect(varName, obj, true)
+    ]
+  }
+  return ([] as any).concat(...Object.entries(obj).map(([key, value]) => {
+    const varKey = `${varName}!${/^[a-z0-9_$]+$/i.test(key) ? `.${key}` : `[${JSON.stringify(key)}]`}`
     if (typeof value === 'object') {
       if (value == null) {
         return `expect(${varKey}).toBeNull()`
       } else if (Array.isArray(value)) {
-        // @ts-ignore
-        return buildExpect(varKey, [].concat(value).sort(), true, addIgnoreTypescript)
+        if (arrayDeep === 0) {
+          return buildExpect(varKey, value, true)
+        }
+        return ([] as any).concat(
+          buildExpect(`${varKey}.length`, value.length, false),
+          ...value.slice(0, 10).map((item, index) => {
+            return object2expect(item, childDeepLevel - 1, arrayDeep, `${varKey}[${index}]`)
+          })
+        )
       } else if (childDeepLevel > 0) {
-        return object2expect(value, childDeepLevel - 1, varKey, true)
+        return object2expect(value, childDeepLevel - 1, arrayDeep, varKey)
       } else {
-        return buildExpect(varKey, value, true, addIgnoreTypescript)
+        return buildExpect(varKey, value, true)
       }
     }
-    return buildExpect(varKey, value, false, addIgnoreTypescript)
+    return buildExpect(varKey, value, false)
   }))
 }
 
