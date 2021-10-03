@@ -21,7 +21,7 @@ export const object2expect = (obj, childDeepLevel = 0, arrayDeep: number, varNam
           return buildExpect(varKey, value, true)
         }
         return ([] as any).concat(
-          buildExpect(`${varKey}.length`, value.length, false),
+          buildExpect(`${varKey}!.length`, value.length, false),
           ...value.slice(0, arrayDeep).map((item, index) => {
             return object2expect(item, childDeepLevel - 1, arrayDeep, `${varKey}[${index}]`)
           })
