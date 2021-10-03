@@ -7,9 +7,10 @@ export const object2expect = (obj, childDeepLevel = 0, arrayDeep: number, varNam
     throw new Error('varName must be set')
   }
   if (childDeepLevel <= 0) {
-    return [
-      buildExpect(varName, obj, true)
-    ]
+    return [buildExpect(varName, obj, true)]
+  }
+  if (typeof obj !== 'object') {
+    return [buildExpect(varName, obj, true)]
   }
   return ([] as any).concat(...Object.entries(obj).map(([key, value]) => {
     const varKey = `${varName}!${/^[a-z0-9_$]+$/i.test(key) ? `.${key}` : `[${JSON.stringify(key)}]`}`
