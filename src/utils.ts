@@ -13,7 +13,7 @@ export const object2expect = (obj, childDeepLevel = 0, arrayDeep: number, varNam
     return [buildExpect(varName, obj, true)]
   }
   return ([] as any).concat(...Object.entries(obj).map(([key, value]) => {
-    const varKey = `${varName}?${/^[a-z0-9_$]+$/i.test(key) ? `.${key}` : `[${JSON.stringify(key)}]`}`
+    const varKey = `${varName}?${/^[a-z_$][a-z0-9_$]*$/i.test(key) ? `.${key}` : `[${JSON.stringify(key)}]`}`
     if (typeof value === 'object') {
       if (value == null) {
         return `expect(${varKey}).toBeNull()`
