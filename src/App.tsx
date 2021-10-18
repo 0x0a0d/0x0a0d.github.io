@@ -4,7 +4,7 @@ import { Object2Expect } from './Object2Expect/Object2Expect'
 import { TailwindCSSMapColor } from './TailwindCSSMapColor/TailwindCSSMapColor'
 import { Json2JSDoc } from './Json2JSDoc/Json2JSDoc'
 
-function App() {
+export const App = () => {
   return (
     <div className='space-x-2 w-screen h-screen'>
       <div className={'h-full bg-gray-300 p-4 w-80 float-left'}>
@@ -17,6 +17,9 @@ function App() {
           </li>
           <li>
             <Link to={'/tailwindcss'}>TailwindCSS - Map Color</Link>
+          </li>
+          <li>
+            <Link to={'/at-command'}>AT Commands</Link>
           </li>
         </ul>
       </div>
@@ -34,6 +37,9 @@ function App() {
           <Route path={'/json2jsdoc'}>
             <Json2JSDoc />
           </Route>
+          <Route path={'/at-command'}>
+            <Redirect to={'/at-command'} />
+          </Route>
           <Route path={'/'}>
             <Redirect to={'/'} />
           </Route>
@@ -42,5 +48,3 @@ function App() {
     </div>
   )
 }
-
-export default App

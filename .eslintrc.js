@@ -2,9 +2,15 @@ module.exports = {
   env: {
     jest: true,
   },
-  parser: '@typescript-eslint/parser',
   extends: ['@cylution/react'],
-  rules: {
-    'unused-imports/no-unused-vars': 0,
-  },
+  overrides: [
+    // typescript
+    {
+      files: ['*.ts', '*.tsx'],
+      parser: '@typescript-eslint/parser',
+    },
+  ],
+  // rules: {
+  //   'unused-imports/no-unused-vars': 0,
+  // },
 }
