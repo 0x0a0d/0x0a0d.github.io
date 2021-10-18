@@ -44,8 +44,8 @@ export const ATCommandDetail = () => {
   }
 
   return (
-    <div className='ml-80 pt-10 pb-10 space-x-2 overflow-y-auto h-screen'>
-      <div className='w-2xl space-y-4'>
+    <div className='ml-80 pt-10 pb-10 space-x-2 overflow-y-auto h-screen 2xl:(flex space-x-5)'>
+      <div className='w-xl space-y-4'>
         <div>
           <div className={'mb-4'}>
             <div className='font-semibold'>{data.command}</div>
@@ -64,9 +64,18 @@ export const ATCommandDetail = () => {
             <pre className='text-xs bg-gray-50 p-4 rounded'>{ innerText(data.example) }</pre>
           </div>
         </div>
-        <div>
+        <div className={'2xl:hidden'}>
           <div className='font-semibold'>Images/Video</div>
           <div className={'space-y-4'}>
+            {
+              data.video && (
+                <iframe
+                  src={data.video}
+                  className={'w-full'}
+                  height={440}
+                />
+              )
+            }
             {
               (data.images || []).map(image => {
                 return (
@@ -78,15 +87,6 @@ export const ATCommandDetail = () => {
                 )
               })
             }
-            {
-              data.video && (
-                <iframe
-                  src={data.video}
-                  className={'w-full'}
-                  height={440}
-                />
-              )
-            }
           </div>
         </div>
         <div>
@@ -96,6 +96,31 @@ export const ATCommandDetail = () => {
         <div>
           <div className='font-semibold'>Output</div>
           <pre className='text-xs bg-gray-200 p-4 rounded whitespace-pre-wrap'>{ innerText(data.output) }</pre>
+        </div>
+      </div>
+      <div className={'hidden 2xl:(block)'}>
+        <div className='font-semibold'>Images/Video</div>
+        <div className={'space-y-4'}>
+          {
+            data.video && (
+              <iframe
+                src={data.video}
+                className={'w-full'}
+                height={440}
+              />
+            )
+          }
+          {
+            (data.images || []).map(image => {
+              return (
+                <img
+                  alt={''}
+                  key={image}
+                  src={image}
+                />
+              )
+            })
+          }
         </div>
       </div>
     </div>
