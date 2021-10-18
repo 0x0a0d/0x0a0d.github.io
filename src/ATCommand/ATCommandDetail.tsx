@@ -44,8 +44,8 @@ export const ATCommandDetail = () => {
   }
 
   return (
-    <div className='ml-80 pt-10 pb-10 space-x-2 overflow-y-auto h-screen 2xl:(flex space-x-5)'>
-      <div className='w-xl space-y-4'>
+    <div className='p-5 space-x-2 overflow-y-auto h-screen 2xl:(flex space-x-5)'>
+      <div className='w-3xl space-y-4 2xl:max-w-2xl'>
         <div>
           <div className={'mb-4'}>
             <div className='font-semibold'>{data.command}</div>
