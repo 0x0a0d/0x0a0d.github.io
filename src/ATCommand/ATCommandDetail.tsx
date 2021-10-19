@@ -53,7 +53,12 @@ export const ATCommandDetail = () => {
           </div>
           <div>
             <div className='font-semibold'>Description</div>
-            <div className='text-sm bg-gray-50 p-4 rounded'>{ innerText(data.description) }</div>
+            <div
+              className='text-sm bg-gray-50 p-4 rounded'
+              dangerouslySetInnerHTML={{
+                __html: data.description
+              }}
+            />
           </div>
           <div>
             <div className='font-semibold'>Support</div>
